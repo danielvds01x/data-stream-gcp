@@ -5,7 +5,9 @@ cd iac
 
 docker build -t iac .
 
-docker run -i -t iac plan
+docker run -i \
+-v $HOME/.config/gcloud:/root/.config/gcloud \
+-t iac plan
 
 docker run -i \
 -v $HOME/.config/gcloud:/root/.config/gcloud \
