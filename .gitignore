@@ -19,3 +19,34 @@
 
 # Go workspace file
 go.work
+
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# Ignore local .terraform directories
+**/.terraform/*
+
+# Ignore crash log files
+crash.log
+
+# Ignore override files as they are usually used to override resources locally and don't need to be committed
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore .terraform.lock.hcl files
+.terraform.lock.hcl
+
+# Ignore any .terraform directories in the working directory
+**/.terraform/
+
+# Ignore provider binary files
+*.tfplugin*
