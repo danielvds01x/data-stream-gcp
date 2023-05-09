@@ -8,24 +8,16 @@ docker run -i \
 -t $DOCKER_IMAGE destroy -auto-approve
 
 # Remove any running Docker containers with the "pub-app-emulator" image
-docker ps --filter "ancestor=iac" -q | xargs -r docker stop
-docker ps --filter "ancestor=iac" -q | xargs -r docker rm
+# docker stop $(docker ps -q --filter "ancestor=iac")
+docker ps --filter "ancestor=iac" -q | xargs -r docker stop -f
+# Delete all stopped containers
+docker container prune -f
+# Remove any Docker images with the "pub-app-emulator" tag
+docker images --filter "reference=iac" -q | xargs -r docker rmi
 
 # Remove any running Docker containers with the "pub-app-emulator" image
 docker ps --filter "ancestor=pub-app-emulator" -q | xargs -r docker stop
-docker ps --filter "ancestor=pub-app-emulator" -q | xargs -r docker rm
-
+# Delete all stopped containers
+docker container prune -f
 # Remove any Docker images with the "pub-app-emulator" tag
 docker images --filter "reference=pub-app-emulator" -q | xargs -r docker rmi
-
-# Change the current directory to the Terraform directory
-# cd iac
-
-# Destroy the Terraform resources and auto-approve
-# terraform destroy -auto-approve
-
-# Change the current directory back to the root directory
-# cd ..
-
-# The script terminates after the Docker containers and images are removed,
-# and the Terraform resources are destroyed successfully
