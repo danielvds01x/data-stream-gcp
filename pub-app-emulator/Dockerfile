@@ -1,5 +1,8 @@
 FROM golang:1.17-alpine
 
+ENV PROJECT='my-project-1544131915126' \
+    PUBSUB_TOPIC='qt-emulated-topic'
+
 WORKDIR /app
 
 COPY go.mod ./

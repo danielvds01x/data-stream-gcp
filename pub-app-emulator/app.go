@@ -5,21 +5,25 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+	"os"
 
 	"cloud.google.com/go/pubsub"
 )
 
+
 func main() {
 	// Set up a client to interact with the Pub/Sub service
+	project_name := os.Getenv("PROJECT")
 	ctx := context.Background()
-	client, err := pubsub.NewClient(ctx, "my-project-1544131915126")
+	client, err := pubsub.NewClient(ctx, project_name)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
 	// Get a reference to the Pub/Sub topic
-	topic := client.Topic("qt-emulated-topic")
+	pubsub_topic := os.Getenv("PUBSUB_TOPIC")
+	topic := client.Topic(pubsub_topic)
 
 	// Set up a random number generator
 	rand.Seed(time.Now().UnixNano())
