@@ -1,6 +1,6 @@
-# Pub/Sub Emulator
+# Data-stream-gcp 
 
-This project provides a Pub/Sub emulator that can be used to generate test messages for development purposes. The emulator is built using Golang and runs in a Docker container. It uses Terraform to deploy a Pub/Sub topic and subscription to Google Cloud Platform.
+This is a study project that I am working on to understand how data deduplication works in Dataflow [Apache Beam]. I am currently working on this project.
 
 ## Requirements
 
